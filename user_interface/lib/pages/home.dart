@@ -25,39 +25,42 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _maincta() {
-    return Row(
-      children: [
-        Container(
-          width: 75,
-          height: 150,
-          decoration: BoxDecoration(
-            color: Colors.purpleAccent,
-            borderRadius: BorderRadius.circular(10)
+    return Padding(
+      padding: EdgeInsets.only(left: 20),
+      child: Row(
+        children: [
+          Container(
+            width: 75,
+            height: 150,
+            decoration: BoxDecoration(
+              color: Colors.purpleAccent,
+              borderRadius: BorderRadius.circular(10)
+            ),
+            child: Column(
+              children: [
+                Text('Basics'),
+                Text('Course'),
+                Text('3-15MIN'),
+              ],
+            ),
           ),
-          child: Column(
-            children: [
-              Text('Basics'),
-              Text('Course'),
-              Text('3-15MIN'),
-            ],
+          Container(
+            width: 75,
+            height: 150,
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(253, 230, 130, 1),
+              borderRadius: BorderRadius.circular(10)
+            ),
+            child: Column(
+              children: [
+                Text('Relaxation'),
+                Text('Music'),
+                Text('3-15MIN'),
+              ],
+            ),
           ),
-        ),
-        Container(
-          width: 75,
-          height: 150,
-          decoration: BoxDecoration(
-            color: const Color.fromRGBO(253, 230, 130, 1),
-            borderRadius: BorderRadius.circular(10)
-          ),
-          child: Column(
-            children: [
-              Text('Relaxation'),
-              Text('Music'),
-              Text('3-15MIN'),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
