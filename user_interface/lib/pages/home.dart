@@ -30,41 +30,66 @@ class _HomePageState extends State<HomePage> {
       );
   }
 
+  //TODO might change to listview
   Widget _recommlist() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              height: 100,
-              padding: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: Colors.greenAccent,
-                borderRadius: BorderRadius.circular(10),
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 100,
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(187,247,208,1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                SizedBox(height: 10,),
+                Text('Focus', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),),
+                Text('Meditation', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),),
+              ],
             ),
           ),
           SizedBox(width: 20,),
           Expanded(
-            child: Container(
-              height: 100,
-              padding: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: Colors.amberAccent,
-                borderRadius: BorderRadius.circular(10),
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 100,
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(254, 243, 199, 1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                SizedBox(height: 10,),
+                Text('Happiness', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),),
+                Text('Meditation', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),),
+              ],
             ),
           ),
           SizedBox(width: 20,),
           Expanded(
-            child: Container(
-              height: 100,
-              padding: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: Colors.greenAccent,
-                borderRadius: BorderRadius.circular(10),
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 100,
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(187,247,208,1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                SizedBox(height: 10,),
+                Text('Focus', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),),
+                Text('Meditation', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),),
+              ],
             ),
           ),
         ],
@@ -90,17 +115,55 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  //TODO Fill up with texts
+  //TODO Make/implement arrow icon round
   Widget _daily() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Expanded(
         child: Container(
-          height: 100,
-          padding: EdgeInsets.all(15),
+          height: 110,
+          padding: EdgeInsets.all(25),
           decoration: BoxDecoration(
             color: const Color.fromARGB(167, 0, 0, 0),
             borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Daily Thought', 
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  Text(
+                    'Meditation: 3-10 MIN', 
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    'Text2', 
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
+              ),
+            ],
           ),
         ),
       ),
