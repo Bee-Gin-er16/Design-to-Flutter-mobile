@@ -118,8 +118,8 @@ Widget _recommendationCard(String title, String subtitle, Color bgColor) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 60), // Space for future images
-        Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black)),
-        Text(subtitle, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black)),
+        Text(title, style: TextStyle( fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black)),
+        Text(subtitle, style: TextStyle( fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black)),
       ],
     ),    
   );
@@ -160,39 +160,71 @@ Widget _recommendationCard(String title, String subtitle, Color bgColor) {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Daily Thought', 
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                  Text(
-                    'Meditation: 3-10 MIN', 
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal
-                    ),
-                  ),
+                  Text( 'Daily Thought',  style: TextStyle( color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold ), ),
+                  Text( 'Meditation: 3-10 MIN', style: TextStyle( color: Colors.white, fontSize: 16, fontWeight: FontWeight.normal ), ),
                 ],
               ),
               OutlinedButton(
-                onPressed: () {}, 
+                onPressed: () { }, 
                 style: OutlinedButton.styleFrom(
                   shape: CircleBorder(), // Makes it a circle
                   side: BorderSide(color: Colors.white), // White outline
                   padding: EdgeInsets.all(10), // Adjust padding for proper spacing
                 ),
-                child: Icon(
-                  Icons.arrow_forward_ios, // Right arrow icon
-                  color: Colors.white,
-                  size: 20,
-                ),
+                child: Icon( Icons.arrow_forward_ios, color: Colors.white, size: 20,),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _cardtemp(Color bgcolor, String title, String subtitle, String duration, Color btnbg, String btntxt, Color btntxtcolor) {
+    return Expanded(
+      child: Container(
+        height: 200,
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: bgcolor, //VAR card bg
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween, // Align items properly
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Image at the top
+                  // Align(
+                  //   alignment: Alignment.topRight, 
+                  //   child: Image.network(
+                  //     'https://www.svgrepo.com/show/287301/lotus.svg', 
+                  //     width: 40, height: 40,
+                  //   ),
+                  // ),
+                  // Text in the middle
+                Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: btnbg)), //VAR title
+                Text(subtitle, style: TextStyle(fontSize: 14, color: btnbg)), //VAR subtitle
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(duration, style: TextStyle(fontSize: 12, color: btnbg)), //VAR duration
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: btnbg, //VAR btn_bg
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  ),
+                  child: Text(btntxt, style: TextStyle(fontSize: 12, color: btntxtcolor)), //VAR btn_txt
+                  ),
+              ],
+            ),
+          ],
         ),
       ),
     );
@@ -204,100 +236,9 @@ Widget _recommendationCard(String title, String subtitle, Color bgColor) {
       child: Row(
         children: [
           // First Box (Basics)
-          Expanded(
-            child: Container(
-              height: 200,
-              padding: EdgeInsets.all(15), // Inner padding
-              decoration: BoxDecoration(
-                color: Colors.purpleAccent,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween, // Align items properly
-                crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
-                children: [
-                  // Image at the top
-                  // Align(
-                  //   alignment: Alignment.topRight, 
-                  //   child: Image.network(
-                  //     'https://www.svgrepo.com/show/287301/lotus.svg', 
-                  //     width: 40, height: 40,
-                  //   ),
-                  // ),
-                  // Text in the middle
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Basics', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
-                      Text('Course', style: TextStyle(fontSize: 14, color: Colors.white70)),
-                    ],
-                  ),
-                  // Time & Button at the bottom
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('3-15 MIN', style: TextStyle(fontSize: 12, color: Colors.white)),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                        ),
-                        child: Text('START', style: TextStyle(fontSize: 12, color: Colors.black)),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
+          _cardtemp(Colors.purpleAccent, 'Basics', 'Course', '3-15 MIN', Colors.white, 'START', Colors.black),
           SizedBox(width: 20), // Space between boxes
-          Expanded(
-            child: Container(
-              height: 200,
-              padding: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: Color.fromRGBO(253, 230, 130, 1),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Align(
-                  //   alignment: Alignment.topRight,
-                  //   child: Image.network(
-                  //     'https://www.svgrepo.com/show/287341/headphones.svg', 
-                  //     width: 40, height: 40,
-                  //   ),
-                  // ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Relaxation', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black)),
-                      Text('Music', style: TextStyle(fontSize: 14, color: Colors.black87)),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('3-15 MIN', style: TextStyle(fontSize: 12, color: Colors.black)),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                        ),
-                        child: Text('START', style: TextStyle(fontSize: 12, color: Colors.white)),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
+          _cardtemp(Color.fromRGBO(253, 230, 130, 1), 'Relaxation', 'Music', '3-15 MIN', Colors.black, 'START', Colors.white),
         ],
       ),
     );
