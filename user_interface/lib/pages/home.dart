@@ -8,6 +8,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
+  // List of pages (for navigation logic)
+  // final List<Widget> _pages = [
+  //   Center(child: Text('Home Screen')),
+  //   Center(child: Text('Sleep Screen')),
+  //   Center(child: Text('Meditate Screen')),
+  //   Center(child: Text('Music Screen')),
+  //   Center(child: Text('Profile Screen')),
+  // ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,75 +44,86 @@ class _HomePageState extends State<HomePage> {
             _recommlist(),
           ],
         ),
+        bottomNavigationBar: _buildBottomNavigationBar(),
       );
   }
 
-  //TODO might change to listview
-  Widget _recommlist() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 100,
-                  padding: EdgeInsets.all(15),
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(187,247,208,1),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                SizedBox(height: 10,),
-                Text('Focus', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),),
-                Text('Meditation', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),),
-              ],
-            ),
-          ),
-          SizedBox(width: 20,),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 100,
-                  padding: EdgeInsets.all(15),
-                  decoration: BoxDecoration(
-                    color: const Color.fromRGBO(254, 243, 199, 1),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                SizedBox(height: 10,),
-                Text('Happiness', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),),
-                Text('Meditation', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),),
-              ],
-            ),
-          ),
-          SizedBox(width: 20,),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 100,
-                  padding: EdgeInsets.all(15),
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(187,247,208,1),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                SizedBox(height: 10,),
-                Text('Focus', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),),
-                Text('Meditation', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),),
-              ],
-            ),
-          ),
-        ],
-      ),
+  Widget _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      currentIndex: _selectedIndex, // Highlight selected tab
+      onTap: _onItemTapped, // Handle taps
+      selectedItemColor: Colors.purple, // Active icon color
+      unselectedItemColor: Colors.grey, // Inactive icon color
+      showUnselectedLabels: true, // Show text for all tabs
+      type: BottomNavigationBarType.fixed, // Keeps all labels visible
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.nightlight_round),
+          label: 'Sleep',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.self_improvement),
+          label: 'Meditate',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.music_note),
+          label: 'Music',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Afsar',
+        ),
+      ],
     );
   }
+
+  Widget _recommlist() {
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: 20),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal, // Enables horizontal scrolling
+          child: Row(
+            children: [
+              _recommendationCard('Focus', 'Meditation', Color.fromRGBO(187, 247, 208, 1)),
+              SizedBox(width: 20),
+              _recommendationCard('Happiness', 'Meditation', Color.fromRGBO(254, 243, 199, 1)),
+              SizedBox(width: 20),
+              _recommendationCard('Focus', 'Meditation', Color.fromRGBO(187, 247, 208, 1)),
+              SizedBox(width: 20),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+// Reusable function for recommendation cards
+Widget _recommendationCard(String title, String subtitle, Color bgColor) {
+  return Container(
+    width: 120, // Fixed width to allow scrolling
+    padding: EdgeInsets.all(15),
+    decoration: BoxDecoration(
+      color: bgColor,
+      borderRadius: BorderRadius.circular(10),
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: 60), // Space for future images
+        Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black)),
+        Text(subtitle, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black)),
+      ],
+    ),    
+  );
+}
 
   Widget _recomm() {
     return Padding(
@@ -115,7 +143,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  //TODO Make/implement arrow icon round
   Widget _daily() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
@@ -151,17 +178,18 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              Column(
-                children: [
-                  Text(
-                    'Text2', 
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                ],
+              OutlinedButton(
+                onPressed: () {}, 
+                style: OutlinedButton.styleFrom(
+                  shape: CircleBorder(), // Makes it a circle
+                  side: BorderSide(color: Colors.white), // White outline
+                  padding: EdgeInsets.all(10), // Adjust padding for proper spacing
+                ),
+                child: Icon(
+                  Icons.arrow_forward_ios, // Right arrow icon
+                  color: Colors.white,
+                  size: 20,
+                ),
               ),
             ],
           ),
