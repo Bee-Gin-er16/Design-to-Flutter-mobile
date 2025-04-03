@@ -197,13 +197,13 @@ Widget _recommendationCard(String title, String subtitle, Color bgColor) {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Image at the top
-                  // Align(
-                  //   alignment: Alignment.topRight, 
-                  //   child: Image.network(
-                  //     'https://www.svgrepo.com/show/287301/lotus.svg', 
-                  //     width: 40, height: 40,
-                  //   ),
-                  // ),
+                  Align(
+                    alignment: Alignment.topRight, 
+                    child: Image.network(
+                      'https://img.freepik.com/free-psd/pink-lotus-flower-blossom-elegance-nature-beauty_632498-46794.jpg?t=st=1743687013~exp=1743690613~hmac=0dcea05f03ab8631e2d6356bb52dc59eb4d215b91b1c6e14cdfc05dd6722d0e9&w=826', 
+                      width: 50, height: 50,
+                    ),
+                  ),
                   // Text in the middle
                 Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: btnbg)), //VAR title
                 Text(subtitle, style: TextStyle(fontSize: 14, color: btnbg)), //VAR subtitle
