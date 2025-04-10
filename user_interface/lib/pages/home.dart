@@ -221,7 +221,7 @@ Widget _recommendationCard(String title, String subtitle, Color bgColor) {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                   ),
                   child: Text(btntxt, style: TextStyle(fontSize: 12, color: btntxtcolor)), //VAR btn_txt
-                  ),
+                ),
               ],
             ),
           ],
