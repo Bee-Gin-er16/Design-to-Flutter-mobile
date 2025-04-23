@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'pages/home.dart';
-import 'pages/newsletter.dart';
+// import 'pages/newsletter.dart';
+import 'pages/foodinterface.dart';
 
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Poppins'),
-      home: Newsletter(),
+      home: FoodUI(),
     );
   }
 }
